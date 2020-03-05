@@ -49,15 +49,31 @@ function selector(str) {
     return document.querySelector(str);
 }
 let navArr = selectAll("nav a");
-//let navArr = document.querySelectorAll("nav a");
-// navArr[0].textContent = siteContent["nav"]["nav-item-1"];
-//console.log(navArr[1].textContent);
+
 for (let i = 0; i < navArr.length; i++) {
     navArr[i].textContent = siteContent["nav"]["nav-item-" + (i + 1)];
 }
+
+const login = document.createElement('a');
+login.textContent = "Login";
+
+const gallery = document.createElement('a');
+gallery.textContent = "Gallery";
+
+let nav = selector("nav");
+nav.prepend(gallery);
+nav.appendChild(login);
+
+console.log(navArr);
+
+navArr.forEach(element => element.style.color = "green");
+login.style.color = "green";
+gallery.style.color = "green";
+
+
+
 let ctaText = selector(".cta-text");
 ctaText.style.width = "25%";
-//ctaText.style.marginTop = "10px";
 let ctah1 = selector(".cta h1");
 ctah1.textContent = siteContent["cta"]["h1"];
 ctah1.style.width = "80%";
