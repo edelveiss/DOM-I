@@ -56,15 +56,17 @@ for (let i = 0; i < navArr.length; i++) {
 
 const login = document.createElement('a');
 login.textContent = "Login";
+login.setAttribute("href", "#");
 
 const gallery = document.createElement('a');
 gallery.textContent = "Gallery";
+gallery.setAttribute("href", "#");
 
 let nav = selector("nav");
 nav.prepend(gallery);
 nav.appendChild(login);
 
-console.log(navArr);
+console.log(nav);
 
 navArr.forEach(element => element.style.color = "green");
 login.style.color = "green";
@@ -78,7 +80,7 @@ let ctah1 = selector(".cta h1");
 ctah1.textContent = siteContent["cta"]["h1"];
 ctah1.style.width = "80%";
 ctah1.style.height = "60%";
-ctah1.style.textAlign = "center";
+
 
 let butStarted = selector(".cta button");
 butStarted.textContent = siteContent["cta"]["button"];
