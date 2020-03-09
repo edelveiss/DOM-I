@@ -40,6 +40,16 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.addEventListener('click', (e) => {
+    logo.style.transform = 'scale(1.5)';
+    //e.target.style.opacity = '0.5';
+    e.stopPropagation();
+})
+logo.addEventListener('mouseleave', (e) => {
+    logo.style.transform = 'scale(1)';
+    //e.target.style.opacity = '0.5';
+    e.stopPropagation();
+})
 
 function selectAll(str) {
     return document.querySelectorAll(str);
@@ -50,9 +60,10 @@ function selector(str) {
 }
 let navArr = selectAll("nav a");
 
-for (let i = 0; i < navArr.length; i++) {
-    navArr[i].textContent = siteContent["nav"]["nav-item-" + (i + 1)];
-}
+// for (let i = 0; i < navArr.length; i++) {
+//     navArr[i].textContent = siteContent["nav"]["nav-item-" + (i + 1)];
+// }
+navArr.forEach((val, i) => val.textContent = siteContent["nav"]["nav-item-" + (i + 1)]);
 
 const login = document.createElement('a');
 login.textContent = "Login";
@@ -63,10 +74,11 @@ gallery.textContent = "Gallery";
 gallery.setAttribute("href", "#");
 
 let nav = selector("nav");
-nav.prepend(gallery);
+nav.insertBefore(gallery, nav.children[2]);
+//nav.prepend(gallery);
 nav.appendChild(login);
 
-console.log(nav);
+console.log(navArr.length);
 
 navArr.forEach(element => element.style.color = "green");
 login.style.color = "green";
@@ -76,16 +88,41 @@ gallery.style.color = "green";
 
 let ctaText = selector(".cta-text");
 ctaText.style.width = "25%";
+
 let ctah1 = selector(".cta h1");
 ctah1.textContent = siteContent["cta"]["h1"];
 ctah1.style.width = "80%";
 ctah1.style.height = "60%";
 
+ctah1.addEventListener('dblclick', (e) => {
+    ctah1.style.transform = 'rotate(20deg)';
+    ctah1.style.color = "red";
+    //e.target.style.opacity = '0.5';
+    e.stopPropagation();
+})
+ctah1.addEventListener('mouseleave', (e) => {
+    ctah1.style.transform = 'rotate(0deg)';
+    //e.target.style.opacity = '0.5';
+    e.stopPropagation();
+})
+
 
 let butStarted = selector(".cta button");
 butStarted.textContent = siteContent["cta"]["button"];
-let imgCta = selector(".cta img");
+let imgCta = document.getElementById("cta-img");
+//let imgCta = selector(".cta img");
 imgCta.setAttribute('src', siteContent["cta"]["img-src"]);
+
+imgCta.setAttribute("alt", "Image of a code snippet.");
+imgCta.addEventListener('mouseenter', (e) => {
+    imgCta.style.transform = 'scale(1.3)';
+    imgCta.style.transitionDuration = '2s';
+    e.stopPropagation();
+})
+imgCta.addEventListener('mouseleave', (e) => {
+    imgCta.style.transform = 'scale(1)';
+    e.stopPropagation();
+})
 
 //main content
 let mainTextContentH4 = selectAll(".text-content h4");
@@ -97,8 +134,22 @@ mainTextContentP[0].textContent = siteContent["main-content"]["features-content"
 mainTextContentH4[1].textContent = siteContent["main-content"]["about-h4"];
 mainTextContentP[1].textContent = siteContent["main-content"]["about-content"];
 
-let mainContentImg = selector(".main-content img");
+//let mainContentImg = selector(".main-content img");
+let mainContentImg = document.getElementById("middle-img");
 mainContentImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+mainContentImg.setAttribute("alt", "Image of code snippets across the screen");
+
+mainContentImg.addEventListener('mouseenter', (e) => {
+    mainContentImg.style.opacity = '0.2';
+    mainContentImg.style.transitionDuration = '2s';
+    e.stopPropagation();
+})
+
+mainContentImg.addEventListener('mouseleave', (e) => {
+    mainContentImg.style.opacity = '1';
+    mainContentImg.style.transitionDuration = '2s';
+    e.stopPropagation();
+})
 
 mainTextContentH4[2].textContent = siteContent["main-content"]["services-h4"];
 mainTextContentP[2].textContent = siteContent["main-content"]["services-content"];
@@ -120,6 +171,8 @@ let contactP = selectAll(".contact p");
 contactP[0].textContent = siteContent["contact"]["address"];
 contactP[1].textContent = siteContent["contact"]["phone"];
 contactP[2].textContent = siteContent["contact"]["email"];
+
+
 
 //footer
 
