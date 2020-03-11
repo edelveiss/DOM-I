@@ -42,13 +42,12 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 logo.addEventListener('click', (e) => {
     logo.style.transform = 'scale(1.5)';
-    //e.target.style.opacity = '0.5';
-    e.stopPropagation();
+
 })
 logo.addEventListener('mouseleave', (e) => {
     logo.style.transform = 'scale(1)';
     //e.target.style.opacity = '0.5';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 
 function selectAll(str) {
@@ -58,6 +57,8 @@ function selectAll(str) {
 function selector(str) {
     return document.querySelector(str);
 }
+
+//---------------------------------
 let navArr = selectAll("nav a");
 
 // for (let i = 0; i < navArr.length; i++) {
@@ -98,12 +99,12 @@ ctah1.addEventListener('dblclick', (e) => {
     ctah1.style.transform = 'rotate(20deg)';
     ctah1.style.color = "red";
     //e.target.style.opacity = '0.5';
-    e.stopPropagation();
+    // e.stopPropagation();
 })
 ctah1.addEventListener('mouseleave', (e) => {
     ctah1.style.transform = 'rotate(0deg)';
     //e.target.style.opacity = '0.5';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 
 
@@ -117,11 +118,11 @@ imgCta.setAttribute("alt", "Image of a code snippet.");
 imgCta.addEventListener('mouseenter', (e) => {
     imgCta.style.transform = 'scale(1.3)';
     imgCta.style.transitionDuration = '2s';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 imgCta.addEventListener('mouseleave', (e) => {
     imgCta.style.transform = 'scale(1)';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 
 //main content
@@ -142,13 +143,13 @@ mainContentImg.setAttribute("alt", "Image of code snippets across the screen");
 mainContentImg.addEventListener('mouseenter', (e) => {
     mainContentImg.style.opacity = '0.2';
     mainContentImg.style.transitionDuration = '2s';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 
 mainContentImg.addEventListener('mouseleave', (e) => {
     mainContentImg.style.opacity = '1';
     mainContentImg.style.transitionDuration = '2s';
-    e.stopPropagation();
+    //e.stopPropagation();
 })
 
 mainTextContentH4[2].textContent = siteContent["main-content"]["services-h4"];
